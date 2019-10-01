@@ -19,17 +19,17 @@ Citation:
 ## Installation
 - CPU
 ```
-conda create -n bilm-jp python=3.6 anaconda
-source activate bilm-jp
+conda create -n elmo-jp python=3.6 anaconda
+source activate elmo-jp
 pip install tensorflow==1.10 h5py
-git clone https://github.com/cl-tohoku/bilm-jp.git
+git clone https://github.com/cl-tohoku/elmo-japanese.git
 ```
 - GPU
 ```
-conda create -n bilm-jp python=3.6 anaconda
-source activate bilm-jp
+conda create -n elmo-jp python=3.6 anaconda
+source activate elmo-jp
 pip install tensorflow-gpu==1.10 h5py
-git clone https://github.com/cl-tohoku/bilm-jp.git
+git clone https://github.com/cl-tohoku/elmo-japanese.git
 ```
 
 ## Getting started
