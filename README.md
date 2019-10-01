@@ -1,4 +1,4 @@
-# bilm-japanese
+# elmo-japanese
 Tensorflow implementation of bidirectional language models (biLM) used to compute ELMo representations
 from ["Deep contextualized word representations"](http://arxiv.org/abs/1802.05365).
 
