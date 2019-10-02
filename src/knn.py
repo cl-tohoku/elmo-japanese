@@ -1,4 +1,5 @@
 import argparse
+from collections import Counter
 import h5py
 import numpy as np
 
@@ -17,6 +18,7 @@ def main(args):
     dataset = load_data(args.data)
     sent_vecs = load_elmo(args.elmo)
 
+    crr = 0.
     sent_id = 0
     for sent_src, label_src in dataset:
         scores = []
@@ -28,13 +30,22 @@ def main(args):
         rank = np.argsort(scores)[::-1]
 
         print(label_src)
+        labels = []
         # print(sent_src)
         for i, r in enumerate(rank[1:11]):
             sent, label = dataset[r]
             print('%d\t%f\t%s' % (i + 1, scores[r], label))
+            labels.append(label)
             # print('%d\t%f\t%s\t%s' % (i + 1, scores[r], label, sent))
         print()
+
+        cnt = Counter(labels)
+        label_rank = [(w, c) for w, c in cnt.most_common()]
+
+        if label_src == labels[0]:
+            crr += 1
         sent_id += 1
+    print('Accuracy: %f(%d/%d)' % (crr/sent_id, crr, sent_id))
 
 
 if __name__ == '__main__':

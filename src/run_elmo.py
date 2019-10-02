@@ -11,6 +11,7 @@ def main(args):
                                           args.data_file,
                                           args.output_file,
                                           args.sent_vec,
+                                          args.sent_vec_type,
                                           args.cell_reset)
     else:
         dump_weights(args.save_dir, args.weight_file)
@@ -41,6 +42,9 @@ if __name__ == '__main__':
                         action='store_true',
                         default=False,
                         help='output sent vec')
+    parser.add_argument('--sent_vec_type',
+                        default='last',
+                        help='last/mean')
     parser.add_argument('--cell_reset',
                         action='store_true',
                         default=False,

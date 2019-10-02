@@ -15,6 +15,7 @@ def dump_embeddings_from_dynamic_bilm(option_file,
                                       data_file,
                                       output_file,
                                       sent_vec=False,
+                                      sent_vec_type='last',
                                       cell_reset=False):
     """
     Get elmo embeddings
@@ -30,9 +31,7 @@ def dump_embeddings_from_dynamic_bilm(option_file,
     batcher = Batcher(word_file, char_file, max_word_length)
 
     # 1D: batch_size, 2D: time_steps, 3D: max_characters_per_token
-    ids_placeholder = tf.placeholder('int32',
-                                     shape=(None, None, max_word_length)
-                                     )
+    ids_placeholder = tf.placeholder('int32', shape=(None, None, max_word_length))
     model = DynamicLanguageModel(options, weight_file, cell_reset=cell_reset)
     ops = model(ids_placeholder)
 
@@ -56,14 +55,18 @@ def dump_embeddings_from_dynamic_bilm(option_file,
 
                 embeddings = np.transpose(embeddings[0, :, :, :], (1, 0, 2))
                 if sent_vec:
-                    embeddings = np.mean(np.asarray(embeddings), axis=1)
-                    embeddings = np.mean(np.asarray(embeddings), axis=0)
+                    if sent_vec_type == 'last':
+                        embeddings = np.mean(np.asarray(embeddings), axis=1)[-1]
+                    else:
+                        embeddings = np.mean(np.asarray(embeddings), axis=1)
+                        embeddings = np.mean(np.asarray(embeddings), axis=0)
 
                 fout.create_dataset(
                     name=str(sentence_id),
                     data=embeddings
                 )
                 sentence_id += 1
+        print('Finished')
 
 
 def dump_weights(tf_save_dir, output_file):
