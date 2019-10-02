@@ -2,10 +2,8 @@ import sys
 import os
 import time
 import json
-
 import tensorflow as tf
 import numpy as np
-
 from dump import dump_weights_during_training
 from model import StaticLanguageModel
 from utils import print_variable_summary, get_feed_dict_from_X
@@ -16,7 +14,7 @@ DTYPE_INT = 'int64'
 tf.logging.set_verbosity(tf.logging.INFO)
 
 
-def average_gradients(tower_grads, batch_size, options):
+def average_gradients(tower_grads):
     # calculate average gradient for each shared variable across all GPUs
     average_grads = []
     for grad_and_vars in zip(*tower_grads):
@@ -244,7 +242,7 @@ def train(options,
         print_variable_summary()
 
         # calculate the mean of each gradient across all GPUs
-        grads = average_gradients(tower_grads, options['batch_size'], options)
+        grads = average_gradients(tower_grads)
         grads, norm_summary_ops = clip_grads(grads, options, True, global_step)
         norm_summaries.extend(norm_summary_ops)
 

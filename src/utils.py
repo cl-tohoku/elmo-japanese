@@ -1,8 +1,6 @@
 import os
 import json
-
 import tensorflow as tf
-
 from data import Vocabulary, CharsVocabulary
 
 
