@@ -7,7 +7,6 @@ This codebase is based on [bilm-tf](https://github.com/allenai/bilm-tf) and deal
 This repository supports both training biLMs and using pre-trained models for prediction.
 
 
-```
 ## Installation
 - CPU
 ```
