@@ -39,10 +39,14 @@ def dump_embeddings_from_dynamic_bilm(option_file,
     with tf.Session(config=tf.ConfigProto(allow_soft_placement=True)) as sess:
         sess.run(tf.global_variables_initializer())
 
+        print('Computing ELMo...')
         sentence_id = 0
         with open(data_file, 'r') as fin, h5py.File(output_file, 'w') as fout:
             for line in fin:
-                sentence = line.strip().split()
+                if (sentence_id + 1) % 100 == 0:
+                    print("%d" % (sentence_id + 1), flush=True, end=" ")
+
+                sentence = line.rstrip().split()
                 char_ids = batcher.batch_sentences([sentence])
 
                 embeddings = sess.run(

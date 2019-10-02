@@ -8,10 +8,7 @@ def view(in_file):
         print('Sents: %d' % len(keys))
         for key in keys:
             n_words, n_layers, dim = infh[key].value.shape
-            print('Words:{:>4} Layers:{:>2} Dim:{:>4}'.format(n_words,
-                                                              n_layers,
-                                                              dim)
-                  )
+            print('Words:{:>4} Layers:{:>2} Dim:{:>4}'.format(n_words, n_layers, dim))
 
 
 if __name__ == '__main__':

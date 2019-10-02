@@ -145,6 +145,6 @@ python src/run_test.py \
 ```
 
 ## Pre-trained model ##
-* [checkpoint](https://drive.google.com/open?id=1wl54H2LevbG-exJSmaeKueT4B6cBPJEF)
+* [checkpoint](https://drive.google.com/open?id=11tsu7cXV6KRS8aYnxoquEQ0xOp_i9mfa)
 * [vocab tokens](https://drive.google.com/open?id=193JOeZcU6nSpGjJH9IP4Qn_UWiJXtRnp)
 * [vocab characters](https://drive.google.com/open?id=15D8F3XRCm3oEdLBbl978KaJG_AAJDW4v)

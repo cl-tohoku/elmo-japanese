@@ -28,5 +28,4 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Compute test perplexity')
     parser.add_argument('--data', type=str, help='text file')
     parser.add_argument('--elmo', type=str, help='elmo file')
-
     main(parser.parse_args())
