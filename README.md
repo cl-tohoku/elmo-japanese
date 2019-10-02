@@ -6,15 +6,7 @@ This codebase is based on [bilm-tf](https://github.com/allenai/bilm-tf) and deal
 
 This repository supports both training biLMs and using pre-trained models for prediction.
 
-Citation:
 
-```
-@inproceedings{Peters:2018,
-  author={Peters, Matthew E. and  Neumann, Mark and Iyyer, Mohit and Gardner, Matt and Clark, Christopher and Lee, Kenton and Zettlemoyer, Luke},
-  title={Deep contextualized word representations},
-  booktitle={Proc. of NAACL},
-  year={2018}
-}
 ```
 ## Installation
 - CPU
@@ -137,10 +129,7 @@ python src/run_elmo.py \
 
 
 ## Using the ELMo trained on Wikipedia
-- Download checkpoint, vocab tokens, and vocab characters
-** [checkpoint](https://drive.google.com/open?id=11tsu7cXV6KRS8aYnxoquEQ0xOp_i9mfa)
-** [vocab tokens](https://drive.google.com/open?id=193JOeZcU6nSpGjJH9IP4Qn_UWiJXtRnp)
-** [vocab characters](https://drive.google.com/open?id=15D8F3XRCm3oEdLBbl978KaJG_AAJDW4v)
+- Download: [checkpoint](https://drive.google.com/open?id=11tsu7cXV6KRS8aYnxoquEQ0xOp_i9mfa), [vocab tokens](https://drive.google.com/open?id=193JOeZcU6nSpGjJH9IP4Qn_UWiJXtRnp), [vocab characters](https://drive.google.com/open?id=15D8F3XRCm3oEdLBbl978KaJG_AAJDW4v)
 
 - Computing sentence representations
 ```
