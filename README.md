@@ -178,3 +178,6 @@ python src/knn.py \
     --data data/dataset.wakati-label.txt \
     --elmo elmo.hdf5
 ```
+
+## LICENCE
+MIT Licence
