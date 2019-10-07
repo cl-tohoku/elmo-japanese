@@ -53,13 +53,17 @@ def dump_embeddings_from_dynamic_bilm(option_file,
                     feed_dict={ids_placeholder: char_ids}
                 )
 
-                embeddings = np.transpose(embeddings[0, :, :, :], (1, 0, 2))
+                # 1D: 3(ELMo layers), 2D: n_words, 3D: dim
+                embeddings = embeddings[0, :, :, :]
                 if sent_vec:
+                    embeddings = np.mean(embeddings, axis=1)
                     if sent_vec_type == 'last':
-                        embeddings = np.mean(np.asarray(embeddings), axis=1)[-1]
+                        embeddings = embeddings[-1]
                     else:
-                        embeddings = np.mean(np.asarray(embeddings), axis=1)
-                        embeddings = np.mean(np.asarray(embeddings), axis=0)
+                        embeddings = np.mean(embeddings, axis=0)
+                else:
+                    # 1D: n_words, 2D: 3, 3D: dim
+                    embeddings = np.transpose(embeddings, (1, 0, 2))
 
                 fout.create_dataset(
                     name=str(sentence_id),
