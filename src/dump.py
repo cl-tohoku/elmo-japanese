@@ -53,7 +53,7 @@ def dump_embeddings_from_dynamic_bilm(option_file,
                     feed_dict={ids_placeholder: char_ids}
                 )
 
-                # 1D: 3(ELMo layers), 2D: n_words, 3D: dim
+                # 1D: 3(ELMo layers), 2D: n_words, 3D: vector dim
                 embeddings = embeddings[0, :, :, :]
                 if sent_vec:
                     embeddings = np.mean(embeddings, axis=1)
@@ -62,7 +62,7 @@ def dump_embeddings_from_dynamic_bilm(option_file,
                     else:
                         embeddings = np.mean(embeddings, axis=0)
                 else:
-                    # 1D: n_words, 2D: 3, 3D: dim
+                    # 1D: n_words, 2D: 3(ELMo layers), 3D: vector dim
                     embeddings = np.transpose(embeddings, (1, 0, 2))
 
                 fout.create_dataset(

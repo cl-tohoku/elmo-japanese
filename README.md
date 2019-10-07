@@ -79,7 +79,7 @@ python scripts/view_sent_sim.py \
 ## Training ELMo on a new corpus
 - Making a token vocab file
 ```
-python src/make_vocab_file.py \
+python scripts/make_vocab_file.py \
     --input_fn data/sample.jp.wakati.txt \
     --output_fn data/vocab.sample.jp.wakati.txt
 ```
